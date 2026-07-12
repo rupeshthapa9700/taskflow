@@ -1,46 +1,115 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow - Todo App</title>
+
     <link rel="stylesheet" href="style.css">
-    <title>Todo</title>
+
+    <script src="script.js" defer></script>
 </head>
 
 <body>
+
     <div class="card">
+
         <header>
             <h1>TaskFlow</h1>
             <p>Organize your day, one task at a time.</p>
         </header>
-        <main>
-            <section id="add-task">
-                <form id="task-form">
-                    <input type="text" class="add-input" id="add-task-input" placeholder="Add a new task..." required>
-                    <button type="submit" id="add-btn">+</button>
-                </form>
-            </section>
-            <section id="filter-buttons">
-                <button class="active" data-filter="all">All</button>
-                <button data-filter="active">Active</button>
-                <button data-filter="completed">Completed</button>
-            </section>
-            <section id="task-list">
-                <ul id="task-container">
 
-                </ul>
-    <p id="empty-message">No tasks available</p>
-                <p id="task-count">0 tasks remaining</p>
-                <button id="clear-completed">
-        Clear Completed
-    </button>
+
+        <main>
+
+            <!-- Add Task -->
+            <section id="add-task">
+
+                <form id="task-form">
+
+                    <input 
+                        type="text" 
+                        id="add-task-input"
+                        placeholder="Add a new task..."
+                        autocomplete="off"
+                    >
+
+                    <button type="submit" id="add-btn">
+                        +
+                    </button>
+
+                </form>
+
             </section>
+
+
+            <!-- Filters -->
+            <section id="filter-buttons">
+
+                <button 
+                    class="active" 
+                    data-filter="all">
+                    All
+                </button>
+
+                <button 
+                    data-filter="active">
+                    Active
+                </button>
+
+                <button 
+                    data-filter="completed">
+                    Completed
+                </button>
+
+            </section>
+
+
+            <!-- Tasks -->
+            <section id="task-list">
+
+                <ul id="task-container"></ul>
+
+
+                <p id="empty-message">
+                    No tasks available
+                </p>
+
+
+                <div id="task-footer">
+
+                    <p id="task-count">
+                        0 tasks remaining
+                    </p>
+
+
+                    <button id="clear-completed">
+                        Clear Completed
+                    </button>
+
+                </div>
+
+
+            </section>
+
+
         </main>
+
+
     </div>
+
+
     <footer>
+
         <script src="script.js"></script>
+
     </footer>
+
+
 </body>
 
 </html>
+
