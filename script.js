@@ -3,24 +3,23 @@ const taskInput = document.querySelector("#add-task-input");
 const taskContainer = document.querySelector("#task-container");
 const taskCount = document.querySelector("#task-count");
 const filterButtons = document.querySelectorAll("#filter-buttons button");
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 taskForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const taskText = taskInput.value;
+  const task = {
+    id: Date.now(),
+    text: taskInput.value,
+    completed: false
+  }
+  tasks.push(task);
+  saveTasks();
 
-  const li = document.createElement("li");
 
-  li.innerHTML = `
-        <input type="checkbox">
-        <span>${taskText}</span>
-        <button class="edit-btn">Edit</button>
-        <button class="delete-btn">Delete</button>
-    `;
 
-  taskContainer.appendChild(li);
   taskInput.value = "";
-
+  renderTasks();
   updateTaskCount();
 });
 
@@ -39,29 +38,63 @@ taskContainer.addEventListener("click", (event) => {
 
       event.target.textContent = "Save";
     } else {
-      const input = li.querySelector(".edit-input");
 
-      const span = document.createElement("span");
-      span.textContent = input.value;
+    const input = li.querySelector(".edit-input");
 
-      li.replaceChild(span, input);
+    const id = Number(li.dataset.id);
 
-      event.target.textContent = "Edit";
-    }
+    tasks = tasks.map(function(task){
+
+        if(task.id === id){
+            task.text = input.value;
+        }
+
+        return task;
+
+    });
+
+    saveTasks();
+
+    renderTasks();
+
+}
   }
 
   if (event.target.classList.contains("delete-btn")) {
-    event.target.parentElement.remove();
+    const li = event.target.parentElement;
+     const id = Number(li.dataset.id);
+     tasks = tasks.filter(function(task){
+        return task.id !== id;
+    });
+
+    saveTasks();
+
+    renderTasks();
     updateTaskCount();
   }
 
   if (event.target.type === "checkbox") {
-    const taskText = event.target.parentElement.querySelector("span");
 
-    taskText.classList.toggle("completed");
+    const li = event.target.parentElement;
+
+    const id = Number(li.dataset.id);
+
+    tasks = tasks.map(function(task){
+
+        if(task.id === id){
+            task.completed = event.target.checked;
+        }
+
+        return task;
+
+    });
+
+    saveTasks();
+
+    renderTasks();
 
     updateTaskCount();
-  }
+}
 });
 
 function updateTaskCount() {
@@ -132,3 +165,32 @@ filterButtons.forEach(function(button){
     });
 
 });
+function saveTasks(){
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log(tasks);
+}
+function renderTasks(){
+
+    taskContainer.innerHTML = "";
+
+    tasks.forEach(function(task){
+
+        const li = document.createElement("li");
+        li.dataset.id = task.id;
+
+        li.innerHTML = `
+            <input type="checkbox" ${task.completed ? "checked" : ""}>
+            <span class="${task.completed ? "completed" : ""}">
+                ${task.text}
+            </span>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        `;
+
+        taskContainer.appendChild(li);
+
+    });
+
+}
+renderTasks();
+updateTaskCount();
