@@ -2,45 +2,49 @@
 
 A clean and responsive Todo application built using **HTML, CSS, and JavaScript**.
 
-TaskFlow helps users organize daily tasks by allowing them to create, edit, complete, filter, and manage tasks with data persistence using LocalStorage.
+TaskFlow helps users organize daily tasks by allowing them to create, edit, complete, filter, and manage tasks with data persistence using the **LocalStorage API**.
+
+## 🌐 Live Demo
+
+[View TaskFlow Live](https://rupeshthapa9700.github.io/taskflow/)
 
 ---
 
 ## 🚀 Features
 
-- ✅ Add new tasks
-- ✅ Prevent empty tasks
-- ✅ Remove extra spaces from tasks
-- ✅ Edit existing tasks
-- ✅ Save edited tasks with Enter key
-- ✅ Cancel editing with Escape key
-- ✅ Mark tasks as completed
-- ✅ Delete tasks
-- ✅ Filter tasks:
-  - All tasks
-  - Active tasks
-  - Completed tasks
+* ✅ Add new tasks
+* ✅ Prevent empty tasks
+* ✅ Remove unnecessary spaces from tasks
+* ✅ Edit existing tasks
+* ✅ Save edited tasks with Enter key
+* ✅ Cancel editing with Escape key
+* ✅ Mark tasks as completed
+* ✅ Delete tasks
+* ✅ Filter tasks:
 
-- ✅ Clear completed tasks
-- ✅ Task counter
-- ✅ Empty state message
-- ✅ Data persistence using LocalStorage
-- ✅ Fully responsive design
+  * All tasks
+  * Active tasks
+  * Completed tasks
+* ✅ Clear completed tasks
+* ✅ Task counter
+* ✅ Empty state message
+* ✅ Data persistence using LocalStorage
+* ✅ Fully responsive design
 
 ---
 
 ## 🛠️ Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript (ES6)
-- LocalStorage API
+* HTML5
+* CSS3
+* JavaScript (ES6)
+* LocalStorage API
 
 ---
 
 ## 📂 Project Structure
 
-```
+```text
 TaskFlow/
 │
 ├── index.html
@@ -49,7 +53,8 @@ TaskFlow/
 ├── README.md
 │
 └── screenshots/
-    └── taskflow.png
+    ├── desktop.png
+    └── mobile.png
 ```
 
 ---
@@ -59,7 +64,7 @@ TaskFlow/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/your-username/taskflow.git
+git clone https://github.com/rupeshthapa9700/taskflow.git
 ```
 
 ### Navigate to project folder
@@ -72,7 +77,7 @@ cd taskflow
 
 Open:
 
-```
+```text
 index.html
 ```
 
@@ -86,11 +91,13 @@ No installation or dependencies required.
 
 ### Desktop View
 
-Add your screenshot here:
+![TaskFlow Desktop](screenshots/desktop.png)
 
-```
-![TaskFlow Screenshot](screenshots/taskflow.png)
-```
+---
+
+### Mobile Responsive View
+
+![TaskFlow Mobile](screenshots/mobile.png)
 
 ---
 
@@ -98,12 +105,12 @@ Add your screenshot here:
 
 Possible improvements:
 
-- Dark mode
-- Drag and drop task ordering
-- Task categories
-- Due dates and reminders
-- Backend database integration
-- User authentication
+* 🌙 Dark mode
+* 🖱️ Drag and drop task ordering
+* 📅 Task categories and due dates
+* 🔔 Task reminders
+* 🔐 User authentication
+* 🗄️ Backend database integration
 
 ---
 
@@ -111,13 +118,14 @@ Possible improvements:
 
 While building this project, I practiced:
 
-- DOM manipulation
-- Event handling
-- Dynamic HTML creation
-- JavaScript arrays and objects
-- LocalStorage management
-- Responsive CSS design
-- Managing application state
+* DOM manipulation
+* Event handling
+* Dynamic HTML creation
+* JavaScript arrays and objects
+* LocalStorage management
+* Responsive CSS design
+* Managing application state
+* Working with browser APIs
 
 ---
 
@@ -133,7 +141,3 @@ https://github.com/rupeshthapa9700
 ## 📄 License
 
 This project is open-source and available under the MIT License.
-
-```
-
-```
