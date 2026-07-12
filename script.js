@@ -27,6 +27,34 @@ taskForm.addEventListener("submit", (event) => {
 
 taskContainer.addEventListener("click", (event) => {
 
+    if(event.target.classList.contains("edit-btn")){
+        const li = event.target.parentElement;
+        const taskText = li.querySelector("span");
+
+        if(event.target.textContent === "Edit"){
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = taskText.textContent;
+    input.classList.add("edit-input");
+
+    li.replaceChild(input, taskText);
+
+    event.target.textContent = "Save";
+
+} else {
+
+    const input = li.querySelector(".edit-input");
+
+    const span = document.createElement("span");
+    span.textContent = input.value;
+
+    li.replaceChild(span, input);
+
+    event.target.textContent = "Edit";
+}
+    }
+
     if(event.target.classList.contains("delete-btn")){
         event.target.parentElement.remove();
         updateTaskCount();

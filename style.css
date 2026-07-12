@@ -138,3 +138,11 @@ header p {
     text-decoration: line-through;
     color: #9ca3af;
 }
+.edit-input{
+    flex: 1;
+    height: 35px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+}
