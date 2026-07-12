@@ -2,92 +2,133 @@ const taskForm = document.querySelector("#task-form");
 const taskInput = document.querySelector("#add-task-input");
 const taskContainer = document.querySelector("#task-container");
 const taskCount = document.querySelector("#task-count");
-
+const filterButtons = document.querySelectorAll("#filter-buttons button");
 
 taskForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const taskText = taskInput.value;
+  const taskText = taskInput.value;
 
-    const li = document.createElement("li");
+  const li = document.createElement("li");
 
-    li.innerHTML = `
+  li.innerHTML = `
         <input type="checkbox">
         <span>${taskText}</span>
         <button class="edit-btn">Edit</button>
         <button class="delete-btn">Delete</button>
     `;
 
-    taskContainer.appendChild(li);
-    taskInput.value = "";
+  taskContainer.appendChild(li);
+  taskInput.value = "";
 
-    updateTaskCount();
+  updateTaskCount();
 });
-
 
 taskContainer.addEventListener("click", (event) => {
+  if (event.target.classList.contains("edit-btn")) {
+    const li = event.target.parentElement;
+    const taskText = li.querySelector("span");
 
-    if(event.target.classList.contains("edit-btn")){
-        const li = event.target.parentElement;
-        const taskText = li.querySelector("span");
+    if (event.target.textContent === "Edit") {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.value = taskText.textContent;
+      input.classList.add("edit-input");
 
-        if(event.target.textContent === "Edit"){
+      li.replaceChild(input, taskText);
 
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = taskText.textContent;
-    input.classList.add("edit-input");
+      event.target.textContent = "Save";
+    } else {
+      const input = li.querySelector(".edit-input");
 
-    li.replaceChild(input, taskText);
+      const span = document.createElement("span");
+      span.textContent = input.value;
 
-    event.target.textContent = "Save";
+      li.replaceChild(span, input);
 
-} else {
-
-    const input = li.querySelector(".edit-input");
-
-    const span = document.createElement("span");
-    span.textContent = input.value;
-
-    li.replaceChild(span, input);
-
-    event.target.textContent = "Edit";
-}
+      event.target.textContent = "Edit";
     }
+  }
 
-    if(event.target.classList.contains("delete-btn")){
-        event.target.parentElement.remove();
-        updateTaskCount();
-    }
+  if (event.target.classList.contains("delete-btn")) {
+    event.target.parentElement.remove();
+    updateTaskCount();
+  }
 
+  if (event.target.type === "checkbox") {
+    const taskText = event.target.parentElement.querySelector("span");
 
-    if(event.target.type === "checkbox"){
+    taskText.classList.toggle("completed");
 
-        const taskText = event.target.parentElement.querySelector("span");
-
-        taskText.classList.toggle("completed");
-
-        updateTaskCount();
-    }
-
+    updateTaskCount();
+  }
 });
 
+function updateTaskCount() {
+  const tasks = document.querySelectorAll("#task-container li");
 
-function updateTaskCount(){
+  let count = 0;
 
-    const tasks = document.querySelectorAll("#task-container li");
+  tasks.forEach(function (task) {
+    const checkbox = task.querySelector("input[type='checkbox']");
 
-    let count = 0;
+    if (!checkbox.checked) {
+      count++;
+    }
+  });
 
-    tasks.forEach(function(task){
+  taskCount.textContent = `${count} tasks remaining`;
+}
 
-        const checkbox = task.querySelector("input[type='checkbox']");
+filterButtons.forEach(function(button){
 
-        if(!checkbox.checked){
-            count++;
-        }
+    button.addEventListener("click", function(){
+
+        filterButtons.forEach(function(btn){
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+
+        const filter = button.dataset.filter;
+
+        const tasks = document.querySelectorAll("#task-container li");
+
+
+        tasks.forEach(function(task){
+
+            const checkbox = task.querySelector("input[type='checkbox']");
+
+
+            if(filter === "all"){
+                task.style.display = "flex";
+            }
+
+            else if(filter === "active"){
+
+                if(!checkbox.checked){
+                    task.style.display = "flex";
+                }
+                else{
+                    task.style.display = "none";
+                }
+
+            }
+
+            else if(filter === "completed"){
+
+                if(checkbox.checked){
+                    task.style.display = "flex";
+                }
+                else{
+                    task.style.display = "none";
+                }
+
+            }
+
+        });
 
     });
 
-    taskCount.textContent = `${count} tasks remaining`;
-}
+});

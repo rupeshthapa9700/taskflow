@@ -81,16 +81,16 @@ header p {
   margin-top: 30px;
 }
 
-#task-list ul li{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 10px 0;
-    border: 1px solid #e5e7eb;
-    width: 520px;
-    height: 60px;
-    padding: 0 15px;
-    border-radius: 12px;
+#task-list ul li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  border: 1px solid #e5e7eb;
+  width: 520px;
+  height: 60px;
+  padding: 0 15px;
+  border-radius: 12px;
 }
 #task-list input[type="checkbox"] {
   appearance: none;
@@ -116,33 +116,33 @@ header p {
   top: -1px;
 }
 .edit-btn,
-.delete-btn{
-    border: none;
-    background: transparent;
-    cursor: pointer;
+.delete-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
-.edit-btn{
-    margin-left: auto;
-    color: #4F46E5;
+.edit-btn {
+  margin-left: auto;
+  color: #4f46e5;
 }
 
-.delete-btn{
-    color: #EF4444;
+.delete-btn {
+  color: #ef4444;
 }
-#task-count{
-    margin-top: 20px;
-    color: #6B7280;
+#task-count {
+  margin-top: 20px;
+  color: #6b7280;
 }
-.completed{
-    text-decoration: line-through;
-    color: #9ca3af;
+.completed {
+  text-decoration: line-through;
+  color: #9ca3af;
 }
-.edit-input{
-    flex: 1;
-    height: 35px;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    background-color: #f9fafb;
+.edit-input {
+  flex: 1;
+  height: 35px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
 }
