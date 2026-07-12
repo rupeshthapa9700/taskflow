@@ -134,3 +134,7 @@ header p {
     margin-top: 20px;
     color: #6B7280;
 }
+.completed{
+    text-decoration: line-through;
+    color: #9ca3af;
+}

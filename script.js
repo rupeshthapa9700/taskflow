@@ -22,5 +22,10 @@ taskContainer.addEventListener("click", (event) => {
     if(event.target.classList.contains("delete-btn")){
         event.target.parentElement.remove();
     }
+
+    if(event.target.type === "checkbox"){
+    const taskText = event.target.nextElementSibling;
+
+    taskText.classList.toggle("completed");
+}
 });
-console.log("Just a push");
